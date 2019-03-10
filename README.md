@@ -1,3 +1,25 @@
+# Selecting the Correct Version
+
+**Warning: Breaking Changes**
+
+Version 2 of this package is ready for production use. [You can find it here, if using Go modules](https://github.com/marksalpeter/token/blob/master/v2)
+
+If you're not using Go modules, simply pull in the latest master.
+
+The order of the `Base62` characters have been changed in `v2` so that the `string` representation of the `Token` and the `int` representation of the token are in the same sort order. This is useful when scaling your app or using NoSQL solutions. Special thanks to [@sudhirj](https://github.com/sudhirj) for the suggestion.
+
+### References
+
+https://instagram-engineering.com/sharding-ids-at-instagram-1cf5a71e5a5c
+
+https://developer.twitter.com/en/docs/basics/twitter-ids.html
+
+https://github.com/ulid/spec
+
+If starting a new project, you can safely use V2. If you already have existing tokens, use V1 instead.
+
+---
+
 [![GoDoc](https://godoc.org/github.com/golang/gddo?status.svg)](http://godoc.org/github.com/marksalpeter/token/v2)
 
 This is a simple package for go that generates randomized base62 encoded tokens based on an integer. It's ideal for short url services or for any short, unique, randomized tokens you need to use throughout your app.
