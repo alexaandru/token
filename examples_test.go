@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 
-	"github.com/marksalpeter/token/v2"
+	"github.com/alexaandru/token/v2"
 )
 
 type Model struct {
