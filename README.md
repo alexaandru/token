@@ -1,49 +1,53 @@
-# Selecting the Correct Version
+# Token
 
-**Warning: Breaking Changes**
+[![License](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+[![Build and Test](https://github.com/alexaandru/token/actions/workflows/ci.yml/badge.svg)](https://github.com/alexaandru/token/actions/workflows/ci.yml)
+[![Go Report Card](https://goreportcard.com/badge/github.com/alexaandru/token)](https://goreportcard.com/report/github.com/alexaandru/token)
+[![Go Reference](https://pkg.go.dev/badge/github.com/alexaandru/token.svg)](https://pkg.go.dev/github.com/alexaandru/token)
 
-Version 2 of this package is ready for production use. [You can find it here, if using Go modules](https://github.com/marksalpeter/token/blob/master/v2)
+This is a simple package that generates randomized base62 encoded tokens based on an integer.
+It's ideal for short url services or for any short, unique, randomized tokens you need to use throughout your app.
 
-If you're not using Go modules, simply pull in the latest master.
+## Credits
 
-The order of the `Base62` characters have been changed in `v2` so that the `string` representation of the `Token` and the `int` representation of the token are in the same sort order. This is useful when scaling your app or using NoSQL solutions. Special thanks to [@sudhirj](https://github.com/sudhirj) for the suggestion.
+This repo is a fork of [marksalpeter/token](https://github.com/marksalpeter/token).
 
-### References
+Special thanks to [@einsteinx2](https://github.com/einsteinx2).
+The encode and decode functions were ported from a short url project of his and he graciously
+allowed [@marksalpeter](https://github.com/marksalpeter) to publish them.
 
-https://instagram-engineering.com/sharding-ids-at-instagram-1cf5a71e5a5c
+Special thanks to [@sudhirj](https://github.com/sudhirj) for encorperating lexical sort order of the tokens into the package.
 
-https://developer.twitter.com/en/docs/basics/twitter-ids.html
+## Why Fork?
 
-https://github.com/ulid/spec
-
-If starting a new project, you can safely use V2. If you already have existing tokens, use V1 instead.
-
----
-
-[![GoDoc](https://godoc.org/github.com/golang/gddo?status.svg)](http://godoc.org/github.com/marksalpeter/token/v2)
-
-This is a simple package for go that generates randomized base62 encoded tokens based on an integer. It's ideal for short url services or for any short, unique, randomized tokens you need to use throughout your app.
+I originally forked it before the parent project adopted modules, so that I can add them.
+Since then, I've cleaned up the code a tiny bit, got linters to pass and eliminated all
+dependencies and reorganized the README a bit.
 
 ## How it Works
 
 `Token` is an alias for `uint64`.
 
-The `Token.Encode()` method returns a base62 encoded string based off of the uint64. The string will always be in the same sort order as the uint64.
+The `Token.Encode()` method returns a base62 encoded string based off of the uint64.
+The string will always be in the same sort order as the uint64.
 
-`Token` implements the `encoding.TextMarshaler` and `encoding.TextUnmarshaler` interfaces to encode and decode to and from the base62 string representation of the `uint64`
+`Token` implements the `encoding.TextMarshaler` and `encoding.TextUnmarshaler` interfaces
+to encode and decode to and from the base62 string representation of the `uint64`
 
-Basically, the outside world will always see the token as a base62 encoded string, but in your app you will always be able to use the token as a `uint64` for fast, indexed, unique, lookups in various databases.
+Basically, the outside world will always see the token as a base62 encoded string,
+but in your app you will always be able to use the token as a `uint64` for fast,
+indexed, unique, lookups in various databases.
 
 **IMPORTANT:** Remember to always check for collisions when adding randomized tokens to a database
 
-## Example
+### Example
 
-```go
+```Go
 package main
 
 import (
 	"fmt"
-	"github.com/marksalpeter/token/v2"
+	"github.com/alexaandru/token/v2"
 )
 
 type Model struct {
@@ -75,8 +79,8 @@ func main() {
 }
 ```
 
-## Special Mentions
+### References
 
-Special thanks to [@einsteinx2](https://github.com/einsteinx2). The encode and decode functions are ported from a short url project of his and he graciously allowed me to publish them.
-
-Special thanks to [@sudhirj](https://github.com/sudhirj) for encorperating lexical sort order of the tokens into the package.
+- https://instagram-engineering.com/sharding-ids-at-instagram-1cf5a71e5a5c
+- https://developer.twitter.com/en/docs/basics/twitter-ids.html
+- https://github.com/ulid/spec
