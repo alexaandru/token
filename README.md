@@ -2,8 +2,8 @@
 
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 [![Build and Test](https://github.com/alexaandru/token/actions/workflows/ci.yml/badge.svg)](https://github.com/alexaandru/token/actions/workflows/ci.yml)
-[![Go Report Card](https://goreportcard.com/badge/github.com/alexaandru/token)](https://goreportcard.com/report/github.com/alexaandru/token)
-[![Go Reference](https://pkg.go.dev/badge/github.com/alexaandru/token.svg)](https://pkg.go.dev/github.com/alexaandru/token)
+[![Go Report Card](https://goreportcard.com/badge/github.com/alexaandru/token/v2)](https://goreportcard.com/report/github.com/alexaandru/token/v2)
+[![Go Reference](https://pkg.go.dev/badge/github.com/alexaandru/token/v2.svg)](https://pkg.go.dev/github.com/alexaandru/token/v2)
 
 This is a simple package that generates randomized base62 encoded tokens based on an integer.
 It's ideal for short url services or for any short, unique, randomized tokens you need to use throughout your app.
